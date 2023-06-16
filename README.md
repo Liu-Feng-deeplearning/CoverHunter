@@ -2,6 +2,8 @@
 
 This is the official PyTorch implementation of the following paper:
 
+https://arxiv.org/abs/2306.09025
+
 > **COVERHUNTER: COVER SONG IDENTIFY WITH REFINED ATTENTION AND ALIGNMENTS**
 > Feng Liu, Deyi Tuo, Yinan Xu, Xintong Han
 
