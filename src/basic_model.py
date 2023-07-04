@@ -10,7 +10,7 @@ from typing import Tuple, Dict
 
 import torch
 
-from src.utils.pytorch_utils import get_latest_model, get_model_with_epoch
+from src.pytorch_utils import get_latest_model, get_model_with_epoch
 
 
 class BasicModel(torch.nn.Module):

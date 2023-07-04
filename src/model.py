@@ -13,7 +13,7 @@ from src.module.conformer import ConformerEncoder
 from src.module.layers import Conv1d, Linear
 from src.basic_model import BasicModel
 from src.loss import HardTripletLoss, FocalLoss, CenterLoss
-from src.utils.utils import load_hparams
+from src.utils import load_hparams
 
 
 class AttentiveStatisticsPooling(torch.nn.Module):
