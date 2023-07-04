@@ -1,0 +1,9 @@
+"aug_speed_mode": [0.8, 0.9, 1.0, 1.1, 1.2]
+"align": False
+"add_noise": {
+  "prob": 0.75,
+  "sr": 16000,
+  "chunk": 3,
+  "name": "cqt_with_asr_noise",
+  "noise_path": "dataset/asr_as_noise/dataset.txt"
+}

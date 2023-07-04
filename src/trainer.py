@@ -37,7 +37,6 @@ def load_checkpoint(model, optimizer=None, checkpoint_dir=None, advanced=False):
   state_dict_g = scan_and_load_checkpoint(checkpoint_dir, 'g_')
   state_dict_do = scan_and_load_checkpoint(checkpoint_dir, 'do_')
   if state_dict_g:
-
     if advanced:
       model_dict = model.state_dict()
       valid_dict = {k: v for k, v in state_dict_g.items() if
@@ -63,48 +62,6 @@ def load_checkpoint(model, optimizer=None, checkpoint_dir=None, advanced=False):
 
   logging.info("step:{}, epoch:{}".format(step, epoch))
   return step, epoch
-
-
-# def train_one_epoch_with_one_loader(model, optimizer, scheduler, train_loader,
-#                                     step, sw=None):
-#   """ Train one epoch with data_loader """
-#   model.train()
-#   for i, batch in enumerate(train_loader):
-#     if step % 1000 == 0:
-#       scheduler.step()
-#     model.train()
-#     device = "cuda"
-#     _, anchor, label = batch
-#     anchor = torch.autograd.Variable(
-#       anchor.to(device, non_blocking=True)).float()
-#     label = torch.autograd.Variable(
-#       label.to(device, non_blocking=True)).long()
-#
-#     optimizer.zero_grad()
-#     _loss_memory = {"lr": get_lr(optimizer)}
-#
-#     total_loss, losses = model.compute_loss(anchor, label)
-#
-#     for key, value in losses.items():
-#       _loss_memory.update({key: value.item()})
-#
-#     _loss_memory.update({"total": total_loss.item()})
-#     total_loss.backward()
-#     torch.nn.utils.clip_grad_norm_(model.parameters(), 1.0)
-#     optimizer.step()
-#
-#     if step % 100 == 0:
-#       log_info = "Steps:{:d}".format(step)
-#       for k, v in _loss_memory.items():
-#         if k == "lr":
-#           log_info += " lr:{:.6f}".format(v)
-#         else:
-#           log_info += " {}:{:.3f}".format(k, v)
-#         if sw:
-#           sw.add_scalar("csi/{}".format(k), v, step)
-#       logging.info(log_info)
-#     step += 1
-#   return step
 
 
 def train_one_epoch(model, optimizer, scheduler, train_loader_lst,
@@ -171,7 +128,6 @@ def validate(model, validation_loader, valid_name, sw=None, epoch_num=-1,
              device="cuda", logger=None):
   """ Validation on dataset, support distributed model"""
   model.eval()
-  # model.module.eval()
   val_losses = {"count": 0}
   with torch.no_grad():
     for j, batch in enumerate(validation_loader):

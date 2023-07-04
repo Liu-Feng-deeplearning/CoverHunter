@@ -25,8 +25,9 @@ def _main():
   """support distribution(ddp)"""
   parser = argparse.ArgumentParser(
     description="Train: python3 -m tools.train model_dir\n\n"
-                "Train for ddp: torchrun -m --nnodes=1 --nproc_per_node=2"
-                " src.csi.v17.train model_dir\n",
+                "Train for ddp: \n"
+                "torchrun -m --nnodes=1 --nproc_per_node=2 tools.train "
+                "model_dir\n",
     formatter_class=RawTextHelpFormatter)
   parser.add_argument('model_dir')
   parser.add_argument('--first_eval', default=False, action='store_true',

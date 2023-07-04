@@ -1,0 +1,77 @@
+
+# Data parameters
+train_path: "data/covers80/full_clean.txt"
+train_sample_path: "data/covers80/full_clean.txt"
+dev_path: "data/covers80/full_clean.txt"
+
+covers80:
+  query_path: "data/covers80/full_clean.txt"
+  ref_path: "data/covers80/full_clean.txt"
+  every_n_epoch_to_dev: 1 # validate after every n epoch
+
+#shs_test:
+#  query_path: "egs/shs100k/test.txt"
+#  ref_path: "egs/shs100k/test.txt"
+#  every_n_epoch_to_dev: 2 # validate after every n epoch
+#
+#dacaos:
+#  query_path: "egs/benchmark_query.txt"
+#  ref_path: "egs/benchmark_ref.txt"
+#  query_in_ref_path: "egs/datacos/query_in_ref.txt"
+#  every_n_epoch_to_dev: 2  # validate after every n epoch
+
+every_n_epoch_to_dev: 1  # validate after every n epoch
+every_n_epoch_to_save: 1  # save model after every n epoch
+
+# Dataset parameters
+data_type: "cqt"  # raw or cqt or mel
+chunk_frame: [1125, 900, 675]
+chunk_s: 135 # = 1125 / 25 * 3
+mode: "random"
+mean_size: 3
+m_per_class: 8
+cqt:
+  hop_size: 0.04  # 1s has 25 frames
+
+spec_augmentation:
+  random_erase:
+    prob: 0.5
+    erase_num: 4
+  roll_pitch:
+    prob: 0.5
+    shift_num: 12
+
+# Train parameters
+seed: 1234
+num_workers: 1
+num_gpus: 1
+batch_size: 16 # 256
+learning_rate: 0.001
+adam_b1: 0.8
+adam_b2: 0.99
+lr_decay: 0.9975
+min_lr: 0.0001
+warmup: False
+warmup_steps: 20000
+
+# Model parameters
+input_dim: 96
+embed_dim: 128
+encoder:  # model-encode
+  output_dims: 128
+  num_blocks: 6
+  attention_dim: 256
+
+pool_type: "attention"
+
+ce:
+  output_dims: 30000
+  weight: 1.0
+  gamma: 2
+
+triplet:
+  margin: 0.3
+  weight: 0.1
+
+center:
+  weight: 0.0
