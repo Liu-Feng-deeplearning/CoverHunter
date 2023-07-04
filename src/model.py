@@ -2,17 +2,16 @@
 # -*- coding:utf-8 -*-
 
 import logging
-import os
 from typing import Tuple, Dict, Optional
 
 import numpy as np
 import torch
 import torch.nn.functional as F
 
-from src.module.conformer import ConformerEncoder
-from src.module.layers import Conv1d, Linear
 from src.basic_model import BasicModel
 from src.loss import HardTripletLoss, FocalLoss, CenterLoss
+from src.module.conformer import ConformerEncoder
+from src.module.layers import Conv1d, Linear
 from src.utils import load_hparams
 
 
@@ -105,11 +104,9 @@ class AttentiveStatisticsPooling(torch.nn.Module):
     # https://github.com/pytorch/pytorch/issues/4320
     total = mask.sum(dim=2, keepdim=True).float()
     mean, std = self._compute_statistics(x, mask / total, self._eps)
-    print("zz:", mean.size())
 
     mean = mean.unsqueeze(2).repeat(1, 1, L)
     std = std.unsqueeze(2).repeat(1, 1, L)
-    print("zz:", mean.size())
     attn = torch.cat([x, mean, std], dim=1)
 
     # Apply layers
@@ -282,9 +279,7 @@ class Model(BasicModel):
 
 def _test_model():
   device = torch.device('cuda')
-  model_dir = "/workspace/project-nas-10487/liufeng/finger_print/egs/" \
-              "pop_ch_fast/v16f"
-  hp_path = os.path.join(model_dir, "config/hparams.yaml")
+  hp_path = "src/hparams.yaml"
   hp = load_hparams(hp_path)
   model = Model(hp).float().to(device)
   batch_size = 4
@@ -297,11 +292,6 @@ def _test_model():
     device)
   loss = model.compute_loss(feat, label)
   print("loss:", loss)
-
-  model = Model(hp, dump=True).to("cpu")
-  model.dump_torch_script(
-    "/workspace/project-nas-10487/liufeng/finger_print/"
-    "aigit-runtime-finger-print/build_csi/xx.pt")
   return
 
 
