@@ -13,8 +13,8 @@ from torch.utils.tensorboard import SummaryWriter
 from src.scheduler import UserDefineExponentialLR
 from src.dataset import AudioFeatDataset, MPerClassSampler
 from src.trainer import save_checkpoint, load_checkpoint
-from src.trainer import train_one_epoch, eval_for_map_with_feat
-from src.trainer import validate
+from src.trainer import train_one_epoch, validate
+from src.eval_testset import eval_for_map_with_feat
 from src.utils import load_hparams, get_hparams_as_string, create_rank_logger
 from src.model import Model
 

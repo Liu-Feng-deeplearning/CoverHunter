@@ -1,0 +1,21 @@
+# Model parameters
+input_dim: 96
+embed_dim: 128
+encoder:  # model-encode
+  output_dims: 128
+  num_blocks: 6
+  attention_dim: 256
+
+pool_type: "attention"
+
+ce:
+  output_dims: 30000
+  weight: 1.0
+  gamma: 2
+
+triplet:
+  margin: 0.3
+  weight: 0.1
+
+center:
+  weight: 0.0
