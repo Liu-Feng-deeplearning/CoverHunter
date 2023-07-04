@@ -35,6 +35,8 @@ more code and model will be released soon.
 
 ## Usage
 
+We take Covers80 as an example to show the whole process.
+
 ### Data Prepare
 
 Before extracting features and training, we need to prepare our dataset as json-format.
@@ -79,6 +81,4 @@ The features of test-set data needs to be extracted first with  tools.extract_cs
 
 ```
 python3 -m tools.eval_testset pretrain-model-dir query_path ref_path
-```
-
- 
+``` 
