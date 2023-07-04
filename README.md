@@ -47,7 +47,9 @@ An example is as below:
 ...
 ```
 
-And we offered raw wav files of Covers80 and dataset.txt in this project.
+Only audio with sample rate of 16k is enough for CSI task. 
+And Covers80 dataset can be download from http://labrosa.ee.columbia.edu/projects/coversongs/covers80/, and make sure
+audio file is available in the dataset.
 
 ### Feature extract
 
