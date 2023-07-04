@@ -69,8 +69,6 @@ def _calc_embed(model, query_loader, device, saved_dir=None):
         if saved_dir:
           saved_path = os.path.join(saved_dir, "{}.npy".format(utt))
           np.save(saved_path, embed)
-      # if j % 100 == 0:
-      #   logging.info("compute {} batches".format(j))
   query_utt_label = sorted(list(query_label.items()))
   return query_utt_label, query_embed
 
@@ -113,7 +111,6 @@ def _generate_dist_matrix(query_utt_label, query_embed, ref_utt_label=None,
 
   if query_in_ref:
     for idx, idy in query_in_ref:
-      # print(idx, idy)
       dist_matrix[idx, idy] = -1  # will be skip when compute map
 
   query_label = [v for k, v in query_utt_label]
@@ -154,7 +151,8 @@ def _cut_one_line_with_dur(line, window_length_s, window_shift_s,
   """
   local_data = line_to_dict(line)
   utt = local_data["utt"]
-  dur_s = local_data["dur_ms"] / 1000
+  dur_s = local_data["dur_s"] if "dur_s" in local_data.keys() \
+      else local_data["dur_ms"] / 1000
   short_lines = []
   start_s = 0.0
   while start_s + window_length_s < dur_s or start_s == 0:
