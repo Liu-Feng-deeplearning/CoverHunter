@@ -1,12 +1,12 @@
 
 # Data parameters
-train_path: "data/covers80/full_clean.txt"
-train_sample_path: "data/covers80/full_clean.txt"
-dev_path: "data/covers80/full_clean.txt"
+train_path: "data/covers80/full.txt"
+train_sample_path: "data/covers80/full.txt"
+dev_path: "data/covers80/full.txt"
 
 covers80:
-  query_path: "data/covers80/full_clean.txt"
-  ref_path: "data/covers80/full_clean.txt"
+  query_path: "data/covers80/full.txt"
+  ref_path: "data/covers80/full.txt"
   every_n_epoch_to_dev: 1 # validate after every n epoch
 
 #shs_test:

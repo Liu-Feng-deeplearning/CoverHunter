@@ -13,7 +13,7 @@ import torch.distributed as dist
 import torch.utils.data
 from torch.utils.data.sampler import Sampler
 
-from src.feature.cqt import shorter
+from src.cqt import shorter
 from src.utils import read_lines, line_to_dict
 
 logging.basicConfig(level=logging.DEBUG,

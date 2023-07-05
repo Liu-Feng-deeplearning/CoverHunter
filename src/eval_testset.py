@@ -151,8 +151,11 @@ def _cut_one_line_with_dur(line, window_length_s, window_shift_s,
   """
   local_data = line_to_dict(line)
   utt = local_data["utt"]
-  dur_s = local_data["dur_s"] if "dur_s" in local_data.keys() \
-      else local_data["dur_ms"] / 1000
+  if "dur_s" in local_data.keys():
+    dur_s = local_data["dur_s"]
+  else:
+    dur_s = local_data["dur_ms"] / 1000
+
   short_lines = []
   start_s = 0.0
   while start_s + window_length_s < dur_s or start_s == 0:
@@ -333,7 +336,7 @@ def eval_for_map_with_feat(hp, model, embed_dir, query_path, ref_path,
     logger.info("map: {}".format(metrics["mean_ap"]))
     logger.info("rank1: {}".format(metrics["rank1"]))
     logger.info("hit_rate: {}\n".format(metrics["hit_rate"]))
-  return metrics["mean_ap"], metrics["hit_rate"]
+  return metrics["mean_ap"], metrics["hit_rate"],  metrics["rank1"]
 
 
 if __name__ == '__main__':

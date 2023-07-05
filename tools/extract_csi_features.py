@@ -15,7 +15,7 @@ import librosa
 import numpy as np
 
 from src.dataset import SignalAug
-from src.feature.cqt import PyCqt
+from src.cqt import PyCqt
 from src.utils import RARE_DELIMITER, load_hparams
 from src.utils import read_lines, write_lines, line_to_dict, dict_to_line
 from src.utils import remake_path_for_linux
@@ -344,11 +344,9 @@ def _generate_csi_features(hp, feat_dir, start_stage, end_stage):
     song_num_map_path = os.path.join(feat_dir, "song_name_num.map")
     _extract_song_num(full_path, song_num_map_path, song_id_map_path)
 
-  clean_path = os.path.join(feat_dir, "full_clean.txt")
   if start_stage <= 11 <= end_stage:
     logging.info("Stage 11: clean for unused keys")
     _sort_lines_by_song_id(full_path, full_path)
-    _clean_lines(full_path, clean_path)
 
   if start_stage <= 13 <= end_stage:
     logging.info("Stage 13:Split item to Train/Dev/Test")
