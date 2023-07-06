@@ -28,7 +28,7 @@ more code and model will be released soon.
 
 - [x] add main code
 - [x] add egs demo for covers80 
-- [ ] add code about course-to-fine training
+- [x] add code about course-to-fine training
 - [x] release model mentioned in paper
 - [ ] train model again for popular song with chinese, with dataset released by TME.
 
@@ -93,5 +93,21 @@ After unzip it, you can run to eval Covers80 and get results shown like this:
 2023-07-05 16:38:46,621 INFO Test, map:0.9266781356046699 rank1:3.0853658536585367
 ```
 
+## Other details
+
+### coarse-to-fine details
+As stated in the paper, the CSI task can be better accomplished 
+with additional alignment information.
+In order to keep the training code simple and readable,
+these alignment information is not contained in the dataloader code.
+However, a basic code is offered to 
+explain our process of obtaining alignment information.
+And you can run the following code:
+
+```bash
+python3 -m tools/alignment_for_frames pretrained-model-dir, data-path, output-alignment-path
+```
+
+---
 Hope that this project can help beginners to get started in this CSI field more quickly. 
 If you have any questions, feel free to send me an email(liufeng900204@163.com) or ask in issue. Good luck!
