@@ -85,7 +85,7 @@ After feature extracting, we can run as below:
 ```
 python3 -m tools.eval_testset pretrain-model-dir query_path ref_path 
 ``` 
-Another choice is to use pre-trained model. Download my model from https://drive.google.com/file/d/1rDZ9CDInpxQUvXRLv87mr-hfDfnV7Y-j/view.
+Another choice is to use pre-trained model. Download pre-train model from https://drive.google.com/file/d/1rDZ9CDInpxQUvXRLv87mr-hfDfnV7Y-j/view.
 It is trained with SHS100k-train and Covers80 is not included in the train-set. 
 After unzip it, you can run to eval Covers80 and get results shown like this:
 
@@ -107,6 +107,10 @@ And you can run the following code:
 ```bash
 python3 -m tools/alignment_for_frames pretrained-model-dir, data-path, output-alignment-path
 ```
+
+### Video about the paper
+
+The video of our oral presentation is [here](https://youtu.be/JdlF0fdE8-g).
 
 ---
 Hope that this project can help beginners to get started in this CSI field more quickly. 
