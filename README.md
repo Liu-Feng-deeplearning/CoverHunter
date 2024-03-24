@@ -32,6 +32,7 @@ more code and model will be released soon.
 - [x] release model mentioned in paper
 - [ ] train model again for popular song with chinese, with dataset released by TME.
 
+Maybe [CoverHunterMps](https://github.com/alanngnet/CoverHunterMPS) is a better project, the author fixes some bugs of my code and make it run, add some new features and more detailed document. Thanks for the @alanngnet!
 
 ## Usage
 
