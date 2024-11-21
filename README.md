@@ -24,7 +24,23 @@ system that help achieve better results. Experiments on several standard CSI
 datasets show that our method significantly improves over state-of-the-art methods 
 with an embedding size of 128 (2.3% on SHS100K-TEST and 17.7% on DaTacos).*
 
-more code and model will be released soon.
+## Update for MIREX2024
+This year(2024) I went to compete on the MIREX CSI track because of being invited by the organizer.
+Due to time and energy constraints, I did not change my model and code, and used the previously trained model(which can be downloaded from google drive).
+Competition results can be found on [mirex-2024](https://www.music-ir.org/mirex/wiki/2024:Cover_Song_Identification_Results).
+The final result is third place(almost the same as second place).
+Perhaps limited by the size of the training data(only open source data is used) and the algorithm, we are still far behind ByteCoverII.
+I am generally satisfied with this result.
+
+In addition, I regret to say that in the past year, I have focused more on music generation.
+I am developing music generation algorithms like Suno and Mureka, so I may not update this project anymore. 
+Thank you for your attention.
+
+---
+
+## Plan
+
+~~more code and model will be released soon.~~
 
 - [x] add main code
 - [x] add egs demo for covers80 
